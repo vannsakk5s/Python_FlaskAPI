@@ -13,7 +13,7 @@ def create_app():
     app = Flask(__name__)
 
     # configure database & JWT
-    app.config['SQLALCHEMY_DATABASE_KEY'] = os.getenv('SQLALCHEMY_URL', 'postgresql://user:password@db:5432/flaskdb')
+    app.config['SQLALCHEMY_DATABASE_KEY'] = os.getenv('DATABASE_URL', 'sqlite:///local.db')
     app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'super-secret-khmer-key')
 
     db.init_app(app)
