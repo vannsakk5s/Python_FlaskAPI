@@ -20,7 +20,14 @@ jobs:
           username: ${{ secrets.WEBSITE_USER || secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ubuntu/your-repo-name
+            # 1. Move into the correct folder name
+            cd /home/ubuntu/Python_FlaskAPI
+            
+            # 2. Pull latest code
             git pull origin main
-            docker-compose up -d --build
+            
+            # 3. Use the correct 'docker compose' command with a space
+            docker compose up -d --build
+            
+            # 4. Clean up old images
             docker image prune -f
